@@ -1,4 +1,5 @@
 # Test gitignore to fix problems with repo #
 
 YGR_game/Temp/
+YGR_game/Library/
 .DS_Store
