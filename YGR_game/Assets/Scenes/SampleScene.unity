@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -229.31738, y: 0}
+  m_AnchoredPosition: {x: -229.31738, y: -55.99997}
   m_SizeDelta: {x: 200, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348099100
@@ -293,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 205, y: 0}
+  m_AnchoredPosition: {x: 205, y: -55.99997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410899385
@@ -2995,6 +2995,7 @@ MonoBehaviour:
   player: {fileID: 1773982220}
   spawnParent: {fileID: 1247379320}
   enemy: {fileID: 1203205774023979707, guid: 641ff134946084742b2281a3082c605e, type: 3}
+  coin: {fileID: 4898827544053606233, guid: 8b1a401682e5fc946ae190afa8a0e7c7, type: 3}
 --- !u!4 &998348345
 Transform:
   m_ObjectHideFlags: 0
@@ -3124,7 +3125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 312.2567, y: 0}
+  m_AnchoredPosition: {x: 312.2567, y: -55.99997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1456054931
@@ -3435,7 +3436,7 @@ Transform:
   m_GameObject: {fileID: 1773982220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3605,7 +3606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 99, y: 0}
+  m_AnchoredPosition: {x: 99, y: -56}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1892622898

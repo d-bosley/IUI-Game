@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     float clockA = 5;
     float clockB = 8;
     float clockC = 12;
+    float clockD = 7;
     public Move moveScript;
     public GameObject player;
     public GameObject spawnParent;
@@ -16,6 +17,7 @@ public class Spawner : MonoBehaviour
     int spawnPoint;
     Vector3 spawnOffset;
     public GameObject enemy;
+    public GameObject coin;
     float speed;
 
     // Start is called before the first frame update
@@ -48,10 +50,20 @@ public class Spawner : MonoBehaviour
 	if (clockC <= 0){
     enemyClone(3);
     clockC = 12;}
+
+    clockD -= 1 * Time.deltaTime;
+	if (clockD <= 0){
+    coinClone(3);
+    clockD = 7;}
     }
 
     void enemyClone(int spawn)
     {
         GameObject enemyClone = Instantiate(enemy, spawns[spawn].position + spawnOffset, Quaternion.identity);
+    }
+
+    void coinClone(int spawn)
+    {
+        GameObject coinClone = Instantiate(coin, spawns[spawn].position + spawnOffset, Quaternion.identity);
     }
 }

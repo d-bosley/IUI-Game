@@ -20,9 +20,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-/*         spawns = spawnParent.GetComponentsInChildren<Transform>();
-        spawnOffsetA = new Vector3(10, 0, 0);
-        spawnOffsetB = new Vector3(30, 0, 0); */
         myself = gameObject;
     }
 
@@ -47,12 +44,18 @@ public class Enemy : MonoBehaviour
         // Check if the trigger zone has a collider with a specific tag (e.g., "Player").
         if (other.CompareTag("Player"))
         {
-            // Get the MoveScript and Slow the player down
+            // Get the player Scripts
             Move move = other.GetComponent<Move>();
+            HeartSystem hearts = other.GetComponent<HeartSystem>();
 
             if(move != null)
             {
                 move.speed = Mathf.Clamp(move.speed - .5f, 1, move.speed);
+            }
+
+            if(hearts != null)
+            {
+                hearts.TakeDamage(1);
             }
         }
     }
