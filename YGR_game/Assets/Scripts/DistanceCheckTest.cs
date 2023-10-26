@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class DistanceCheck : MonoBehaviour
+public class DistanceCheckTest : MonoBehaviour
 {
 
     [System.Serializable]
     public class Spawning
     {
         public float distance;
-        public GameObject prefab;
+        //public GameObject prefab;
+        public string prefab;
         public int position;
     }
 
     float distance = 0;
     float miles = 0;
-    float ygr_feet;
+    float ygr_feet = .1f;
     public Move move;
     public Spawner spawner;
     public Spawning[] spawn;

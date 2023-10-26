@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     Vector3 spawnOffset;
     public GameObject enemy;
     public GameObject coin;
+    // public GameObject prefab;
     float speed;
 
     // Start is called before the first frame update
@@ -30,7 +31,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ClockCycle();
+       // ClockCycle();
     }
 
     void ClockCycle()
@@ -65,5 +66,9 @@ public class Spawner : MonoBehaviour
     void coinClone(int spawn)
     {
         GameObject coinClone = Instantiate(coin, spawns[spawn].position + spawnOffset, Quaternion.identity);
+    }
+    public void spawnClone(GameObject prefab, int spawn)
+    {
+        GameObject spawnClone = Instantiate(prefab, spawns[spawn].position + spawnOffset, Quaternion.identity);
     }
 }
