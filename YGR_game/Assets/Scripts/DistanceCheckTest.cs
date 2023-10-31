@@ -10,13 +10,13 @@ public class DistanceCheckTest : MonoBehaviour
     public class Spawning
     {
         public float distance;
-        //public GameObject prefab;
-        public string prefab;
+        public string prefabName;
         public int position;
+        //public GameObject prefab = GameObject.Find(objectName);
     }
 
-    float distance = 0;
-    float miles = 0;
+    public float distance = 0;
+    public float miles = 0;
     float ygr_feet = .1f;
     public Move move;
     public Spawner spawner;
@@ -33,6 +33,7 @@ public class DistanceCheckTest : MonoBehaviour
     void Update()
     {
         distance += ygr_feet * move.speed * Time.fixedDeltaTime;
+        //if (distance >= 1){miles += 1; distance = 0;}
         spawnObjects(distance);
     }
 
@@ -42,7 +43,7 @@ public class DistanceCheckTest : MonoBehaviour
     {
     if (currentDistance >= spawn[i].distance && !spawnedFlags[i]) 
     {
-        spawner.spawnClone(spawn[i].prefab, spawn[i].position);
+        spawner.spawnClone(spawn[i].prefabName, spawn[i].position);
         spawnedFlags[i] = true; // Set a flag to keep from endless spawning.
     }
     }

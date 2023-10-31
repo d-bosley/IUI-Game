@@ -194,12 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2845a038adb444a8a36b72691e7d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: 0}
-  spawner: {fileID: 0}
-  spawn:
-  - distance: 0
-    prefab: {fileID: 0}
-    position: 0
+  distance: 0
+  miles: 0
+  move: {fileID: 1773982221}
+  spawner: {fileID: 998348344}
+  spawn: []
 --- !u!4 &228448145
 Transform:
   m_ObjectHideFlags: 0

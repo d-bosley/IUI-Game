@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
     Vector3 spawnOffset;
     public GameObject enemy;
     public GameObject coin;
-    // public GameObject prefab;
+    private Dictionary<string, GameObject> gameObjectDictionary;
     float speed;
 
     // Start is called before the first frame update
@@ -26,6 +26,13 @@ public class Spawner : MonoBehaviour
     {
         spawns = spawnParent.GetComponentsInChildren<Transform>();
         spawnOffset = new Vector3(30, 0, 0);
+
+        // Setting up the Strings and their corresponding GameObjects
+        gameObjectDictionary = new Dictionary<string, GameObject>
+        {
+            { "enemy", enemy },
+            { "coin", coin }
+        };
     }
 
     // Update is called once per frame
@@ -67,8 +74,15 @@ public class Spawner : MonoBehaviour
     {
         GameObject coinClone = Instantiate(coin, spawns[spawn].position + spawnOffset, Quaternion.identity);
     }
-    public void spawnClone(GameObject prefab, int spawn)
+
+    public void spawnClone(string prefabName, int spawn)
     {
+        gameObjectDictionary.TryGetValue(prefabName, out GameObject prefab);
         GameObject spawnClone = Instantiate(prefab, spawns[spawn].position + spawnOffset, Quaternion.identity);
     }
+
+    //public void spawnClone(GameObject prefab, int spawn)
+    //{
+    //    GameObject spawnClone = Instantiate(prefab, spawns[spawn].position + spawnOffset, Quaternion.identity);
+    //}
 }
