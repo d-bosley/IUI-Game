@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HeartSystem : MonoBehaviour
 {
     public GameObject[] hearts;
+    public GameObject gameOverUI;
     private int life;
     private bool dead;
 
@@ -38,7 +39,14 @@ public class HeartSystem : MonoBehaviour
             {
                 //we died
                 dead = true;
+                gameOver();
             }
         }
+    }
+
+    //show game over ui
+    public void gameOver()
+    {
+        gameOverUI.SetActive(true);
     }
 }
