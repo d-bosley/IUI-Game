@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 public class DistanceCheckTest : MonoBehaviour
 {
+    //inés -- to access score distance ui
+    public TMP_Text distScore;
 
     [System.Serializable]
     public class Spawning
@@ -35,6 +39,8 @@ public class DistanceCheckTest : MonoBehaviour
         distance += ygr_feet * move.speed * Time.fixedDeltaTime;
         //if (distance >= 1){miles += 1; distance = 0;}
         spawnObjects(distance);
+        //inés -- update ui
+        distScore.text = "Score: " + distance.ToString("F0");
     }
 
     void spawnObjects(float currentDistance)
