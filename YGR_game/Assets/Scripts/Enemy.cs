@@ -5,29 +5,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-/*  public GameObject player;
-    public GameObject spawnParent;
-    Transform[] spawns;
-    int spawnPoint;
-    Vector3 spawnOffsetA;
-    Vector3 spawnOffsetB; */
-    //public Move move;
-    //public Spawner spawner;
     Vector3 thisPosition;
     float distance;
     GameObject myself;
+    GameObject player;
+    Move move;
 
     // Start is called before the first frame update
     void Start()
     {
         myself = gameObject;
+        player = GameObject.Find("Player");
+        if(player != null){move = player.GetComponent<Move>();}
     }
 
     // Update is called once per frame
     void Update()
     {
         distance = Vector3.Distance(transform.position, Vector3.zero);
-        transform.Translate(Vector2.right * -30f * Time.deltaTime);
+        transform.Translate(Vector2.right * -30f * move.speed  * Time.deltaTime);
         DestroyObject();
     }
 
