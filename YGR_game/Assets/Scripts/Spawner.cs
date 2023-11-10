@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     Transform[] spawns;
     int spawnPoint;
     Vector3 spawnOffset;
+    Vector3 fallOffset;
     public GameObject enemy;
     public GameObject coin;
     public GameObject paddle;

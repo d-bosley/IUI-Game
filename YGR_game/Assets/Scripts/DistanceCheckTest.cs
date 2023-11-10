@@ -7,7 +7,7 @@ using TMPro;
 
 public class DistanceCheckTest : MonoBehaviour
 {
-    //inés -- to access score distance ui
+    //inï¿½s -- to access score distance ui
     public TMP_Text distScore;
 
     [System.Serializable]
@@ -37,9 +37,9 @@ public class DistanceCheckTest : MonoBehaviour
     void Update()
     {
         distance += ygr_feet * move.speed * Time.fixedDeltaTime;
-        //if (distance >= 1){miles += 1; distance = 0;}
+        if(distance >= 1){miles += 1; distance = 0;}
         spawnObjects(distance);
-        //inés -- update ui
+        //inï¿½s -- update ui
         distScore.text = "Score: " + distance.ToString("F0");
     }
 
