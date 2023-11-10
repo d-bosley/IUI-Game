@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+/*  public GameObject player;
+    public GameObject spawnParent;
+    Transform[] spawns;
+    int spawnPoint;
+    Vector3 spawnOffsetA;
+    Vector3 spawnOffsetB; */
+    //public Move move;
+    //public Spawner spawner;
     Vector3 thisPosition;
     float distance;
     GameObject myself;
@@ -14,6 +22,9 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+/*         spawns = spawnParent.GetComponentsInChildren<Transform>();
+        spawnOffsetA = new Vector3(10, 0, 0);
+        spawnOffsetB = new Vector3(30, 0, 0); */
         myself = gameObject;
         player = GameObject.Find("Player");
         if(player != null){move = player.GetComponent<Move>();}
@@ -23,13 +34,13 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(transform.position, Vector3.zero);
-        transform.Translate(Vector2.right * -30f * move.speed  * Time.deltaTime);
+        transform.Translate(Vector2.right * -20f * move.speed * Time.deltaTime);
         DestroyObject();
     }
 
     private void DestroyObject()
     {
-        if(distance > 35){
+        if(distance > 20){
         //Debug.Log("Too Far");
         Destroy(myself, 1.0f);
     }
@@ -40,18 +51,15 @@ public class Enemy : MonoBehaviour
         // Check if the trigger zone has a collider with a specific tag (e.g., "Player").
         if (other.CompareTag("Player"))
         {
-            // Get the player Scripts
+            // Access the health component of the object with the "Player" tag.
             Move move = other.GetComponent<Move>();
-            HeartSystem hearts = other.GetComponent<HeartSystem>();
+            Collider2D Collider = myself.GetComponent<Collider2D>();
 
             if(move != null)
             {
-                move.speed = Mathf.Clamp(move.speed - .5f, 1, move.speed);
-            }
-
-            if(hearts != null)
-            {
-                hearts.TakeDamage(1);
+                move.damaged = true;
+                Collider.enabled = false;
+                Destroy(myself, 2.0f);
             }
         }
     }

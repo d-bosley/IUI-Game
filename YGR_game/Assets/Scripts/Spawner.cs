@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour
     public GameObject coin;
     public GameObject paddle;
     public GameObject health;
+    public GameObject falling;
     private Dictionary<string, GameObject> gameObjectDictionary;
     float speed;
 
@@ -24,6 +25,7 @@ public class Spawner : MonoBehaviour
     {
         spawns = spawnParent.GetComponentsInChildren<Transform>();
         spawnOffset = new Vector3(30, 0, 0);
+        fallOffset = new Vector3(0, 5, 0);
 
         // Setting up the Strings and their corresponding GameObjects
         gameObjectDictionary = new Dictionary<string, GameObject>
@@ -31,7 +33,8 @@ public class Spawner : MonoBehaviour
             { "enemy", enemy },
             { "coin", coin },
             { "paddle", paddle },
-            { "health", health }
+            { "health", health },
+            { "falling", falling }
         };
     }
 
@@ -54,6 +57,11 @@ public class Spawner : MonoBehaviour
     void coinClone(int spawn)
     {
         GameObject coinClone = Instantiate(coin, spawns[spawn].position + spawnOffset, Quaternion.identity);
+    }
+
+    public void fallClone(int spawn)
+    {
+        GameObject fallClone = Instantiate(fall, spawns[spawn].position + fallOffset, Quaternion.identity);
     }
 
     public void spawnClone(string prefabName, int spawn)

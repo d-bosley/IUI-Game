@@ -2,19 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class Move : MonoBehaviour
 {
     public Tilemap tile;
+    public TextMeshProUGUI debug;
     public GameObject spawnParent;
+    public SpriteRenderer sprite;
     [HideInInspector] public float speed;
+    [HideInInspector] public float currentSpeed;
     public Collider2D box;
     float timer = 2;
+    float pauseTime = 2;
+    float lockTime = 2;
     float countdown = 1;
     Transform[] spawns;
     [HideInInspector] public int spawnPoint;
     [HideInInspector] public bool moving = false;
     [HideInInspector] public bool playing = true;
+    [HideInInspector] public bool stunned = false;
+    [HideInInspector] public bool damaged = false;
+    [HideInInspector] public bool locked = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -24,6 +33,7 @@ public class Move : MonoBehaviour
         transform.position = spawns[2].position;
         spawnPoint = 2;
         speed = 1;
+        currentSpeed = speed;
     }
 
     private void Update()
@@ -40,6 +50,8 @@ public class Move : MonoBehaviour
         {
         moving = true;
         }
+        debug.text = "Speed: " + speed.ToString() + "\nTimer: " +  timer.ToString() + "\nCurrentSpeed: " + currentSpeed.ToString();
+        sprite.color = locked ? Color.blue : Color.red;
     }
 
     private void TilePosition(Vector2 direction)
@@ -66,15 +78,52 @@ public class Move : MonoBehaviour
         else{
         timer = 2;
         }
+
+
+        if (damaged)
+        {
+            locked = true;
+            currentSpeed = currentSpeed;
+            speed = 0;
+            pauseTime -= countdown * Time.deltaTime;
+            timer = 3;
+            if(pauseTime <= 0)
+            {
+                speed = Mathf.Clamp(currentSpeed -.5f, 1, currentSpeed);
+                pauseTime = 2;
+                damaged = false;
+                locked = false;
+            }
+        }
+        else
+        {
+            currentSpeed = speed;
+        }
+
+
+        if (stunned)
+        {
+            locked = true;
+            lockTime -= countdown * Time.deltaTime;
+            if(lockTime <= 0)
+            {
+                lockTime = 2;
+                stunned = false;
+                locked = false;
+            }
+        }
     }
 
     private void Moving(int place)
     {
+        if(!locked)
+        {
         Vector3 currentPosition = transform.position;
         Vector3 targetPosition = spawns[place].position;
         float distance = Vector3.Distance(currentPosition, targetPosition);
         transform.position = Vector3.Lerp(currentPosition, targetPosition, .25f);
         moving = false;
+        }
         //transform.Translate(direction * distance * Time.deltaTime);
         //transform.position = targetPosition;
         //debug.text = "Current: " + currentPosition.ToString() + "\nTarget: " +  targetPosition.ToString() + "\nDistance: " +  distance.ToString();

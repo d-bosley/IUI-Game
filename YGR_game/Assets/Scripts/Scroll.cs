@@ -5,6 +5,7 @@ using UnityEngine;
 public class Scroll : MonoBehaviour
 {
     public float scrollSpeedX = -0.5f; // Adjust scroll speed in the Inspector.
+    Vector2 baseScroll;
 
     public Renderer bg_a;
     public Renderer bg_b;
@@ -22,6 +23,9 @@ public class Scroll : MonoBehaviour
         mat_b = bg_b.material;
         mat_c = bg_c.material;
         mat_d = bg_d.material;
+        //baseScroll = Vector2.right * scrollSpeedX;
+        //mat_s = sky.material;
+        //mat_h = hill.material;
     }
 
     void Update()
@@ -40,4 +44,5 @@ public class Scroll : MonoBehaviour
         //mat_c.mainTextureOffset += textureOffset * 1.25f;
         //mat_d.mainTextureOffset += textureOffset * 1.5f;
     }
+
 }
