@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour
 
     public void fallClone(int spawn)
     {
-        GameObject fallClone = Instantiate(fall, spawns[spawn].position + fallOffset, Quaternion.identity);
+        GameObject fallClone = Instantiate(falling, spawns[spawn].position + fallOffset, Quaternion.identity);
     }
 
     public void spawnClone(string prefabName, int spawn)
