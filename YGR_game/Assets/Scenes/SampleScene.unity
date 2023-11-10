@@ -3356,7 +3356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 193, y: -124}
+  m_AnchoredPosition: {x: 193, y: 0}
   m_SizeDelta: {x: 200, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348099100
@@ -9846,6 +9846,7 @@ MonoBehaviour:
   coin: {fileID: 4898827544053606233, guid: 8b1a401682e5fc946ae190afa8a0e7c7, type: 3}
   paddle: {fileID: 0}
   health: {fileID: 0}
+  falling: {fileID: 0}
 --- !u!4 &998348345
 Transform:
   m_ObjectHideFlags: 0
@@ -11094,7 +11095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -218, y: -40}
+  m_AnchoredPosition: {x: -218, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180907301
@@ -16046,12 +16047,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 458946276}
+  debug: {fileID: 0}
   spawnParent: {fileID: 1247379320}
+  sprite: {fileID: 0}
   speed: 0
+  currentSpeed: 0
   box: {fileID: 0}
   spawnPoint: 0
   moving: 0
   playing: 1
+  stunned: 0
+  damaged: 0
+  locked: 0
 --- !u!212 &1773982222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18887,7 +18894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.95001, y: -43}
+  m_AnchoredPosition: {x: 174.95001, y: 0}
   m_SizeDelta: {x: 71.909, y: 73.768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2126655478
