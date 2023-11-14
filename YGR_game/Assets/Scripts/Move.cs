@@ -7,7 +7,7 @@ using TMPro;
 public class Move : MonoBehaviour
 {
     //public TextMeshProUGUI debug;
-    //public Collider2D box;
+    public Collider2D box;
     public Tilemap tile;
     public GameObject spawnParent;
     public SpriteRenderer sprite;
