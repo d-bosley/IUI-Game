@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
 
     private void DestroyObject()
     {
-        if(distance > 20){
+        if(distance > 35){
         //Debug.Log("Too Far");
         Destroy(myself, 1.0f);
     }

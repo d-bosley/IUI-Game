@@ -28,7 +28,7 @@ public class Building : MonoBehaviour
 
     private void DestroyObject()
     {
-        if(distance > 30){
+        if(distance > 35){
         //Debug.Log("Too Far");
         Destroy(myself, 1.0f);
     }
