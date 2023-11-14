@@ -37,7 +37,7 @@ public class DistanceCheckTest : MonoBehaviour
     void Update()
     {
         distance += ygr_feet * move.speed * Time.fixedDeltaTime;
-        if(distance >= 1)
+        if(distance * .01 >= 1)
         {miles += 1;
         distance = 0;
         spawner.buildingClone();}
