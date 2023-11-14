@@ -50,7 +50,7 @@ public class DistanceCheckTest : MonoBehaviour
 
     float QuickMath(float value)
     {
-        float finalValue = (Mathf.Round(value * .1)) * 10f;
+        float finalValue = (Mathf.Round(value * .1f)) * 10f;
         return finalValue;
     }
 
