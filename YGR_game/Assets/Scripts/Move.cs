@@ -6,13 +6,13 @@ using TMPro;
 
 public class Move : MonoBehaviour
 {
+    //public TextMeshProUGUI debug;
+    //public Collider2D box;
     public Tilemap tile;
-    public TextMeshProUGUI debug;
     public GameObject spawnParent;
     public SpriteRenderer sprite;
     [HideInInspector] public float speed;
     [HideInInspector] public float currentSpeed;
-    public Collider2D box;
     float timer = 2;
     float pauseTime = 2;
     float lockTime = 2;
@@ -50,8 +50,6 @@ public class Move : MonoBehaviour
         {
         moving = true;
         }
-        debug.text = "Speed: " + speed.ToString() + "\nTimer: " +  timer.ToString() + "\nCurrentSpeed: " + currentSpeed.ToString();
-        sprite.color = locked ? Color.blue : Color.red;
     }
 
     private void TilePosition(Vector2 direction)
@@ -62,9 +60,6 @@ public class Move : MonoBehaviour
         Vector3Int targetCellPosition = cellPosition + gridDirection;
         Vector3 targetPosition = tile.GetCellCenterWorld(targetCellPosition);
         float distance = Vector3.Distance(currentPosition, targetPosition);
-        //transform.Translate(direction * distance * Time.deltaTime);
-        //transform.position = targetPosition;
-        //debug.text = "Current: " + currentPosition.ToString() + "\nTarget: " +  targetPosition.ToString() + "\nDistance: " +  distance.ToString();
     }
 
     private void PlayerSpeed()
