@@ -37,7 +37,8 @@ public class DistanceCheckTest : MonoBehaviour
     void Update()
     {
         distance += ygr_feet * move.speed * Time.fixedDeltaTime;
-        if(Mathf.Round(distance) % QuickMath(distance) = 0)
+        float roundedDistance = Mathf.Round(distance);
+        if(roundedDistance % QuickMath(distance) = 0f)
         {miles += 1;
         spawner.buildingClone();
         if(distance >= 100f)
