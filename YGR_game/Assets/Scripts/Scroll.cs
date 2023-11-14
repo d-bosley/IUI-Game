@@ -40,7 +40,7 @@ public class Scroll : MonoBehaviour
         float offsetX = scrolling;
         Vector2 textureOffset = Vector2.right * offsetX;
         mat_a.mainTextureOffset += textureOffset;
-        mat_b.mainTextureOffset += textureOffset * 1.125f;
+        mat_b.mainTextureOffset += textureOffset;
         mat_c.mainTextureOffset += textureOffset * 5f;
         mat_d.mainTextureOffset += textureOffset * 5.95f;
     }
