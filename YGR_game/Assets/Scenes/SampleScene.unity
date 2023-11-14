@@ -16905,7 +16905,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   speed: 0
   currentSpeed: 0
-  box: {fileID: 0}
+  box: {fileID: 1773982225}
   spawnPoint: 0
   moving: 0
   playing: 1
