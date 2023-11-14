@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distScore: {fileID: 1180907301}
   distance: 0
-  miles: 1
+  miles: 0
   ygr_feet: 0.05
   move: {fileID: 1773982221}
   spawner: {fileID: 998348344}
