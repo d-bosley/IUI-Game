@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scroll : MonoBehaviour
 {
-    public float scrollSpeedX = -0.5f; // Adjust scroll speed in the Inspector.
+    public float scrollSpeedX = 0.5f; // Adjust scroll speed in the Inspector.
     Vector2 baseScroll;
 
     public Renderer bg_a;
@@ -30,19 +30,19 @@ public class Scroll : MonoBehaviour
 
     void Update()
     {
-        float offsetX = Time.time * scrollSpeedX * moveScript.speed;
-        mat_a.SetTextureOffset("_MainTex", new Vector2(offsetX, 0f));
-        mat_b.SetTextureOffset("_MainTex", new Vector2(offsetX * 1.125f, 0f));
-        mat_c.SetTextureOffset("_MainTex", new Vector2(offsetX * 1.25f, 0f));
-        mat_d.SetTextureOffset("_MainTex", new Vector2(offsetX * 1.5f, 0f));
-        //float speed = moveScript.speed;
-        //float scrolling = scrollSpeedX * speed;
-        //float offsetX = scrolling;
-        //Vector2 textureOffset = Vector2.right * offsetX;
-        //mat_a.mainTextureOffset += textureOffset;
-        //mat_b.mainTextureOffset += textureOffset * 1.125f;
-        //mat_c.mainTextureOffset += textureOffset * 1.25f;
-        //mat_d.mainTextureOffset += textureOffset * 1.5f;
+        // float offsetX = Time.time * scrollSpeedX * moveScript.speed;
+        // mat_a.SetTextureOffset("_MainTex", new Vector2(offsetX, 0f));
+        // mat_b.SetTextureOffset("_MainTex", new Vector2(offsetX * 1.125f, 0f));
+        // mat_c.SetTextureOffset("_MainTex", new Vector2(offsetX * 1.25f, 0f));
+        // mat_d.SetTextureOffset("_MainTex", new Vector2(offsetX * 1.5f, 0f));
+        float speed = moveScript.speed;
+        float scrolling = scrollSpeedX * speed;
+        float offsetX = scrolling;
+        Vector2 textureOffset = Vector2.right * offsetX;
+        mat_a.mainTextureOffset += textureOffset;
+        mat_b.mainTextureOffset += textureOffset * 1.125f;
+        mat_c.mainTextureOffset += textureOffset * 5f;
+        mat_d.mainTextureOffset += textureOffset * 5.95f;
     }
 
 }

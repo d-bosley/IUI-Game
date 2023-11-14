@@ -21,7 +21,7 @@ public class DistanceCheckTest : MonoBehaviour
 
     public float distance = 0;
     public float miles = 0;
-    float ygr_feet = .1f;
+    public float ygr_feet = .01f;
     public Move move;
     public Spawner spawner;
     public Spawning[] spawn;
@@ -37,7 +37,10 @@ public class DistanceCheckTest : MonoBehaviour
     void Update()
     {
         distance += ygr_feet * move.speed * Time.fixedDeltaTime;
-        if(distance >= 1){miles += 1; distance = 0;}
+        if(distance >= 1)
+        {miles += 1;
+        distance = 0;
+        spawner.buildingClone();}
         spawnObjects(distance);
         //in�s -- update ui
         distScore.text = "Score: " + distance.ToString("F0");

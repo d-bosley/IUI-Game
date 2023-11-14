@@ -26,6 +26,7 @@ public class Spawner : MonoBehaviour
     {
         spawns = spawnParent.GetComponentsInChildren<Transform>();
         spawnOffset = new Vector3(30, 0, 0);
+        buildingOffset = new Vector3(40, 5, 0);
         fallOffset = new Vector3(0, 5, 0);
 
         // Setting up the Strings and their corresponding GameObjects
@@ -63,6 +64,11 @@ public class Spawner : MonoBehaviour
     public void fallClone(int spawn)
     {
         GameObject fallClone = Instantiate(falling, spawns[spawn].position + fallOffset, Quaternion.identity);
+    }
+
+    public void buildingClone()
+    {
+        GameObject buildingClone = Instantiate(building, spawns[1].position + buildingOffset, Quaternion.identity);
     }
 
     public void spawnClone(string prefabName, int spawn)
