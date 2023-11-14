@@ -37,13 +37,21 @@ public class DistanceCheckTest : MonoBehaviour
     void Update()
     {
         distance += ygr_feet * move.speed * Time.fixedDeltaTime;
-        if(distance * .01 >= 1)
+        if(Mathf.Round(distance) % QuickMath(distance) = 0)
         {miles += 1;
-        distance = 0;
-        spawner.buildingClone();}
+        spawner.buildingClone();
+        if(distance >= 100f)
+        {distance = 0;}
+        }
         spawnObjects(distance);
         //in�s -- update ui
-        distScore.text = "Score: " + distance.ToString("F0");
+        distScore.text = "Score: " + miles.ToString("F0");
+    }
+
+    float QuickMath(float value)
+    {
+        float finalValue = (Mathf.Round(value * .1)) * 10;
+        return finalValue;
     }
 
     void spawnObjects(float currentDistance)
