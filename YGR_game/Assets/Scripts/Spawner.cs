@@ -13,11 +13,13 @@ public class Spawner : MonoBehaviour
     int spawnPoint;
     Vector3 spawnOffset;
     Vector3 fallOffset;
+    Vector3 buildingOffset;
     public GameObject enemy;
     public GameObject coin;
     public GameObject paddle;
     public GameObject health;
     public GameObject falling;
+    public GameObject building;
     private Dictionary<string, GameObject> gameObjectDictionary;
     float speed;
 
