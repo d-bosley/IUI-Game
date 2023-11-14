@@ -945,7 +945,6 @@ GameObject:
   - component: {fileID: 96897704}
   - component: {fileID: 96897703}
   - component: {fileID: 96897701}
-  - component: {fileID: 96897702}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -995,28 +994,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &96897702
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96897700}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &96897703
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3524,7 +3501,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 193, y: 0}
+  m_AnchoredPosition: {x: 193, y: -103.034485}
   m_SizeDelta: {x: 200, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348099100
@@ -9205,7 +9182,7 @@ Transform:
   m_GameObject: {fileID: 751047610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -2}
-  m_LocalScale: {x: 1.025, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 96897704}
@@ -11751,7 +11728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -218, y: 0}
+  m_AnchoredPosition: {x: -218, y: -25.599457}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180907301
@@ -16899,13 +16876,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9053bb320b34694fb035f8d8de7f3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  box: {fileID: 1773982225}
   tile: {fileID: 458946276}
-  debug: {fileID: 0}
   spawnParent: {fileID: 1247379320}
   sprite: {fileID: 0}
   speed: 0
   currentSpeed: 0
-  box: {fileID: 1773982225}
   spawnPoint: 0
   moving: 0
   playing: 1
@@ -19831,7 +19807,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.95001, y: 0}
+  m_AnchoredPosition: {x: 174.95001, y: -28.644104}
   m_SizeDelta: {x: 71.909, y: 73.768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2126655478
