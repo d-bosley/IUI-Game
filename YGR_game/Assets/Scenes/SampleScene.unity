@@ -1965,7 +1965,7 @@ MonoBehaviour:
   distScore: {fileID: 1180907301}
   distance: 0
   miles: 0
-  ygr_feet: 0.85
+  ygr_feet: 0.2
   move: {fileID: 1773982221}
   spawner: {fileID: 998348344}
   spawn:
@@ -3501,7 +3501,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 204.44598, y: -103.034485}
+  m_AnchoredPosition: {x: 204.44598, y: 0}
   m_SizeDelta: {x: 222.892, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348099100
@@ -11728,7 +11728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -214, y: -40.528}
+  m_AnchoredPosition: {x: -214, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180907301
@@ -19807,7 +19807,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.95001, y: -28.644104}
+  m_AnchoredPosition: {x: 174.95001, y: 0}
   m_SizeDelta: {x: 71.909, y: 73.768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2126655478

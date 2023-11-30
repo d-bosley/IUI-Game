@@ -64,7 +64,9 @@
     <Compile Include="Assets\Scripts\Paddle.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\Falling.cs" />
+    <Compile Include="Assets\Scripts\Blinking.cs" />
     <Compile Include="Assets\Scripts\Scroll.cs" />
+    <Compile Include="Assets\Scripts\Building.cs" />
     <Compile Include="Assets\Scripts\DistanceCheckTest.cs" />
     <Compile Include="Assets\Scripts\DistanceCheck.cs" />
     <Compile Include="Assets\Scripts\SceneChanger.cs" />

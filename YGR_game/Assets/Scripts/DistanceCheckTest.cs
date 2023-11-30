@@ -21,7 +21,7 @@ public class DistanceCheckTest : MonoBehaviour
 
     public float distance = 0;
     public float miles = 0;
-    public float ygr_feet = .01f;
+    public float ygr_feet;
     public Move move;
     public Spawner spawner;
     public Spawning[] spawn;
@@ -30,6 +30,7 @@ public class DistanceCheckTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ygr_feet = .2f;
         spawnedFlags = new bool[spawn.Length];
     }
 
