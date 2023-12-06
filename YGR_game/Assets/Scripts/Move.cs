@@ -6,22 +6,24 @@ using TMPro;
 
 public class Move : MonoBehaviour
 {
-    //public TextMeshProUGUI debug;
-    public Collider2D box;
     public Tilemap tile;
     public GameObject spawnParent;
     public SpriteRenderer sprite;
-    [HideInInspector] public float speed;
-    [HideInInspector] public float currentSpeed;
+    public Collider2D box;
+    public HeartSystem health;
     float timer = 2;
     float pauseTime = 2;
     float lockTime = 2;
     float countdown = 1;
+    float passtime = 6;
     Transform[] spawns;
+    [HideInInspector] public float speed;
+    [HideInInspector] public float currentSpeed;
     [HideInInspector] public int spawnPoint;
     [HideInInspector] public bool moving = false;
     [HideInInspector] public bool playing = true;
     [HideInInspector] public bool stunned = false;
+    [HideInInspector] public bool passed = false;
     [HideInInspector] public bool damaged = false;
     [HideInInspector] public bool locked = false;
 
@@ -39,6 +41,8 @@ public class Move : MonoBehaviour
     private void Update()
     {
         PlayerSpeed();
+        Passing();
+        EndGame();
 
         int dir_Up = Input.GetKeyDown(KeyCode.W) ? 1 : 0;
         int dir_Down = Input.GetKeyDown(KeyCode.S) ? 1 : 0;
@@ -62,12 +66,32 @@ public class Move : MonoBehaviour
         float distance = Vector3.Distance(currentPosition, targetPosition);
     }
 
+    private void Passing()
+    {
+        if(passed)
+        {
+            box.enabled = false;
+            bool visible = Mathf.FloorToInt(8 * Time.time) % 2 == 0;
+            sprite.enabled = visible;
+            passtime -= countdown * Time.deltaTime;
+            if(passtime <= 0)
+            {
+                passed = false;
+                passtime = 6;
+                sprite.enabled = true;
+                box.enabled = true;
+            }
+        }
+    }
+
     private void PlayerSpeed()
     {
         if (!moving){
         timer -= countdown * Time.deltaTime;
 
-        if (timer <= 0){speed += .025f * Time.deltaTime;}
+        if (timer <= 0){
+        speed += .025f * Time.deltaTime;
+        }
         }
 
         else{
@@ -78,6 +102,7 @@ public class Move : MonoBehaviour
         if (damaged)
         {
             locked = true;
+            passed = true;
             currentSpeed = currentSpeed;
             speed = 0;
             pauseTime -= countdown * Time.deltaTime;
@@ -122,5 +147,13 @@ public class Move : MonoBehaviour
         //transform.Translate(direction * distance * Time.deltaTime);
         //transform.position = targetPosition;
         //debug.text = "Current: " + currentPosition.ToString() + "\nTarget: " +  targetPosition.ToString() + "\nDistance: " +  distance.ToString();
+    }
+
+    void EndGame()
+    {
+        if(health.dead == true)
+        {
+            speed = 0;
+        }
     }
 }

@@ -20,7 +20,7 @@ public class DistanceCheckTest : MonoBehaviour
     }
 
     public float distance = 0;
-    public float miles = 0;
+    public int miles = 0;
     public float ygr_feet;
     public Move move;
     public Spawner spawner;
@@ -38,21 +38,15 @@ public class DistanceCheckTest : MonoBehaviour
     void Update()
     {
         distance += ygr_feet * move.speed * Time.fixedDeltaTime;
-        float roundedDistance = Mathf.Round(distance);
         if(distance >= 100f)
         {miles += 1;
         distance = 0;
         spawner.buildingClone();
+        spawner.fallClone(1);
         }
         spawnObjects(distance);
         //in�s -- update ui
         distScore.text = "Score: " + miles.ToString("F0");
-    }
-
-    float QuickMath(float value)
-    {
-        float finalValue = (Mathf.Round(value * .1f)) * 10f;
-        return finalValue;
     }
 
     void spawnObjects(float currentDistance)

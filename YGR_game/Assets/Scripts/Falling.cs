@@ -46,12 +46,13 @@ public class Falling : MonoBehaviour
         {
             // Access the health component of the object with the "Player" tag.
             Move move = other.GetComponent<Move>();
+            HeartSystem health = other.GetComponent<HeartSystem>();
             Collider2D Collider = myself.GetComponent<Collider2D>();
+            
+            health.GainHearts();
 
             if(move != null)
             {
-                move.stunned = true;
-                Collider.enabled = false;
                 Destroy(myself, 2.0f);
             }
         }

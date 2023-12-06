@@ -6,7 +6,7 @@ using TMPro;
 
 public class Collection : MonoBehaviour
 {
-    private int coins = 0;
+    [HideInInspector] public int coins = 0;
 
     public TMP_Text CoinsTxt; //to have access to UI coin counter
 

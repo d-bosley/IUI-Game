@@ -8,7 +8,7 @@ public class HeartSystem : MonoBehaviour
     public GameObject[] hearts;
     public GameObject gameOverUI;
     private int life;
-    private bool dead;
+    [HideInInspector] public bool dead;
 
 
     void Start()
@@ -41,6 +41,14 @@ public class HeartSystem : MonoBehaviour
                 dead = true;
                 gameOver();
             }
+        }
+    }
+
+    public void GainHearts()
+    {
+        if (life < 3)
+        {
+            life++;
         }
     }
 

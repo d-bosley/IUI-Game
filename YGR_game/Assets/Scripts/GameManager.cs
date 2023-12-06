@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
+
+public class GameManager : MonoBehaviour
+{
+    public Collection items;
+    public DistanceCheckTest distance;
+    public Move player;
+    public TMP_Text hiScore;
+    int coinScore = 0;
+    int mileScore = 0;
+    int speedScore = 0;
+    int topScore;
+    int topSpeed;
+    string highScore;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        UpdateHighScore();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //Setting the score
+        //Score is the player's distance, number of coins, and their top speed
+        coinScore = Mathf.Max(coinScore, items.coins);
+        mileScore = Mathf.Max(mileScore, distance.miles);
+        speedScore = Mathf.Max(speedScore, Mathf.RoundToInt(player.speed));
+    }
+
+        //SCORE DESCRIPTION
+        //Grabs the highscore value of the game and saves it for later use, by creating a file that is stored on the local machine
+        //What may work better is to save the score to the local browser session
+        //No direct downloads and the file removes itself once the session closes
+        //This also means the session should save even if they leave the site
+        //It only closes once the browser session (the browser itself) has closed
+
+    void SetHighScore()
+    {
+        //Run this after the player has lost all of their hearts and the game has ended
+        topScore = Mathf.Max(mileScore, PlayerPrefs.GetInt("HiScore", 0));
+        //topSpeed = Mathf.Max(speedScore, PlayerPrefs.GetInt("HiSpeed", 0);)
+        PlayerPrefs.SetInt("HiScore", topScore);
+        //PlayerPrefs.SetInt("HiSpeed", topSpeed);
+    }
+
+    void UpdateHighScore()
+    {
+        highScore = $"Hi-Score: {PlayerPrefs.GetInt("HiScore", 0)}";
+        hiScore.text = highScore;
+        //highscore = $"Hi-Scores Miles: {PlayerPrefs.GetInt("HiScore", 0)} Speed: {PlayerPrefs.GetInt("HiSpeed", 0)}";
+
+    }
+}

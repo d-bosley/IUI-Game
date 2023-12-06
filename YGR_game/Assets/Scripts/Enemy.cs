@@ -53,7 +53,10 @@ public class Enemy : MonoBehaviour
         {
             // Access the health component of the object with the "Player" tag.
             Move move = other.GetComponent<Move>();
+            HeartSystem health = other.GetComponent<HeartSystem>();
             Collider2D Collider = myself.GetComponent<Collider2D>();
+
+            health.TakeDamage(1);
 
             if(move != null)
             {
