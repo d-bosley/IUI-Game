@@ -5,18 +5,21 @@ using UnityEngine.UI;
 
 public class HeartSystem : MonoBehaviour
 {
-    public GameObject[] hearts;
-    public GameObject gameOverUI;
-    private int life;
+    //public GameObject[] hearts;
     [HideInInspector] public bool dead;
-
+    public GameObject heartsParent;
+    public GameObject gameOverUI;
+    Image[] hearts;
+    private int life;
     public AudioSource deadAudio; 
 
 
     void Start()
     {
         //life is the amount of hearts we have
-        life = hearts.Length;
+        //life = hearts.Length;
+        hearts = heartsParent.GetComponentsInChildren<Image>();
+        life = 3;
     }
 
 
@@ -35,7 +38,9 @@ public class HeartSystem : MonoBehaviour
         if (life >= 1)
         {
             life -= damage;
-            Destroy(hearts[life].gameObject);
+            hearts[life].enabled = false;
+            //heartImg.enabled = false;
+            //Destroy(hearts[life].gameObject);
             //if we have no hearts
             if (life < 1) 
             {
@@ -51,6 +56,8 @@ public class HeartSystem : MonoBehaviour
     {
         if (life < 3)
         {
+            hearts[life].enabled = true;
+            //heartImg.enabled = true;
             life++;
         }
     }

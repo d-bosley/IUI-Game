@@ -27,7 +27,7 @@ public class Falling : MonoBehaviour
         distance = Vector3.Distance(transform.position, Vector3.zero);
         // Impulse value that makes the object ascend before falling
         // Force value that makes the object fall once it's spawned
-        transform.Translate(Vector2.up * -20f * Time.deltaTime);
+        transform.Translate(Vector2.up * -10f * Time.deltaTime);
         DestroyObject();
     }
 
@@ -48,7 +48,7 @@ public class Falling : MonoBehaviour
             Move move = other.GetComponent<Move>();
             HeartSystem health = other.GetComponent<HeartSystem>();
             Collider2D Collider = myself.GetComponent<Collider2D>();
-            
+
             health.GainHearts();
 
             if(move != null)
