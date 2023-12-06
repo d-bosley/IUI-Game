@@ -10,6 +10,8 @@ public class HeartSystem : MonoBehaviour
     private int life;
     [HideInInspector] public bool dead;
 
+    public AudioSource deadAudio; 
+
 
     void Start()
     {
@@ -22,7 +24,7 @@ public class HeartSystem : MonoBehaviour
     {
         if (dead == true)
         {
-            //dead code, TO DO: trigger game over screen
+            //dead code
             Debug.Log("we died");
         }
     }
@@ -40,6 +42,7 @@ public class HeartSystem : MonoBehaviour
                 //we died
                 dead = true;
                 gameOver();
+                
             }
         }
     }
@@ -56,5 +59,6 @@ public class HeartSystem : MonoBehaviour
     public void gameOver()
     {
         gameOverUI.SetActive(true);
+        deadAudio.Play(); //play dead audio
     }
 }
