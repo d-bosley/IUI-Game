@@ -20,7 +20,7 @@ public class Collection : MonoBehaviour
             Destroy(collision.gameObject); //destroy it
             coins += 1; //increment counter
             Debug.Log("coins: " + coins);
-            CoinsTxt.text = "Coins: " + coins; //update UI
+            CoinsTxt.text = "x " + coins; //update UI
         }
     }
 }
