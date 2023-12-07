@@ -23,7 +23,7 @@ public class Coin : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(transform.position, Vector3.zero);
-        transform.Translate(Vector2.right * -20f * move.speed  * Time.deltaTime);
+        transform.Translate(Vector2.right * -12f * move.speed  * Time.deltaTime);
         DestroyObject();
     }
 

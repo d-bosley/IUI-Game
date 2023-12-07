@@ -143,3 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ba59beb225be747bab799290f927d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySprite:
+  - sprite: {fileID: 21300000, guid: fd3b11d1e0d43b14c8163805b5c1d8c3, type: 3}
+  - sprite: {fileID: 21300000, guid: 82341b09d091cc649872460107081280, type: 3}
+  - sprite: {fileID: 21300000, guid: 5231531b91f926f4a86f7e0af9801410, type: 3}
+  - sprite: {fileID: 21300000, guid: 14d5ceccce01ad344b5f93319d027479, type: 3}

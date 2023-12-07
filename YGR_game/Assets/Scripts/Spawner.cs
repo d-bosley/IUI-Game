@@ -27,9 +27,9 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         spawns = spawnParent.GetComponentsInChildren<Transform>();
-        spawnOffset = new Vector3(30, 0, 0);
-        buildingOffset = new Vector3(40, 5, 0);
-        fallOffset = new Vector3(0, 5, 0);
+        spawnOffset = new Vector3(30f, 0f, 0f);
+        buildingOffset = new Vector3(40f, 6.15f, 0f);
+        fallOffset = new Vector3(0f, 5f, 0f);
 
         // Setting up the Strings and their corresponding GameObjects
         gameObjectDictionary = new Dictionary<string, GameObject>

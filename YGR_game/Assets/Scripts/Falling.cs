@@ -53,7 +53,7 @@ public class Falling : MonoBehaviour
 
             if(move != null)
             {
-                Destroy(myself, 2.0f);
+                Destroy(myself, 0f);
             }
         }
     }

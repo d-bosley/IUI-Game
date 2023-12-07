@@ -16,7 +16,6 @@ public class DistanceCheckTest : MonoBehaviour
         public float distance;
         public string prefabName;
         public int position;
-        //public GameObject prefab = GameObject.Find(objectName);
     }
 
     public float distance = 0;

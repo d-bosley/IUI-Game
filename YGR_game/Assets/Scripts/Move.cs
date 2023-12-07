@@ -90,7 +90,7 @@ public class Move : MonoBehaviour
         timer -= countdown * Time.deltaTime;
 
         if (timer <= 0){
-        speed += .0125f * Time.deltaTime;
+        speed += .025f * Time.deltaTime;
         }
         }
 

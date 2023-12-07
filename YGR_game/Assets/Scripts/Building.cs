@@ -22,7 +22,7 @@ public class Building : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(transform.position, Vector3.zero);
-        transform.Translate(Vector2.right * -14f * move.speed * Time.deltaTime);
+        transform.Translate(Vector2.right * -7.95f * move.speed * Time.deltaTime);
         DestroyObject();
     }
 

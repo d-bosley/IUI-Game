@@ -49,8 +49,8 @@ public class Scroll : MonoBehaviour
         Vector2 textureOffset = Vector2.right * offsetX;
         mat_a.mainTextureOffset += textureOffset;
         mat_b.mainTextureOffset += textureOffset * .25f;
-        mat_c.mainTextureOffset += textureOffset * 10f;
-        mat_d.mainTextureOffset += textureOffset * 10.125f;
+        mat_c.mainTextureOffset += textureOffset * 8f;
+        mat_d.mainTextureOffset += textureOffset * 8.125f;
         mat_e.mainTextureOffset += textureOffset * streamSpeed_A;
         mat_f.mainTextureOffset += textureOffset * streamSpeed_B;
     }

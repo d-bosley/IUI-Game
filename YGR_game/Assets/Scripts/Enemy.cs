@@ -5,43 +5,43 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-/*  public GameObject player;
-    public GameObject spawnParent;
-    Transform[] spawns;
-    int spawnPoint;
-    Vector3 spawnOffsetA;
-    Vector3 spawnOffsetB; */
-    //public Move move;
-    //public Spawner spawner;
+    [System.Serializable]
+    public class EnemySprite
+    {
+        public Sprite sprite;
+    }
+
     Vector3 thisPosition;
     float distance;
     GameObject myself;
     GameObject player;
     Move move;
+    SpriteRenderer rend;
+    public EnemySprite[] enemySprite;
+    //Sprite[] enemySprite = new Sprite[4];
+
 
     // Start is called before the first frame update
     void Start()
     {
-/*         spawns = spawnParent.GetComponentsInChildren<Transform>();
-        spawnOffsetA = new Vector3(10, 0, 0);
-        spawnOffsetB = new Vector3(30, 0, 0); */
         myself = gameObject;
         player = GameObject.Find("Player");
+        rend = myself.GetComponent<SpriteRenderer>();
         if(player != null){move = player.GetComponent<Move>();}
+        ChangeSprite();
     }
 
     // Update is called once per frame
     void Update()
     {
         distance = Vector3.Distance(transform.position, Vector3.zero);
-        transform.Translate(Vector2.right * -20f * move.speed * Time.deltaTime);
+        transform.Translate(Vector2.right * -12f * move.speed * Time.deltaTime);
         DestroyObject();
     }
 
     private void DestroyObject()
     {
         if(distance > 35){
-        //Debug.Log("Too Far");
         Destroy(myself, 1.0f);
     }
     }
@@ -67,29 +67,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void GetPositions()
+    private void ChangeSprite()
     {
-/*         if(moveScript.spawnPoint == 1)
-        {
-            if(moveScript.moving == true)
-            {
-            transform.position = spawns[3].position - spawnOffsetA;
-            }
-            transform.Translate(Vector2.right * (15f * moveScript.speed) * Time.deltaTime);
-        }
-
-        if(moveScript.spawnPoint == 3)
-        {
-            if(moveScript.moving == true)
-            {
-            transform.position = spawns[1].position + spawnOffsetB;
-            }
-            transform.Translate(Vector2.right * (-25f * moveScript.speed) * Time.deltaTime);
-        }
-
-        if(moveScript.spawnPoint == 2)
-        {
-            transform.position = spawns[1].position + spawnOffsetB;
-        } */
+        int value = Random.Range(0, 4);
+        rend.sprite = enemySprite[value].sprite;
     }
 }
