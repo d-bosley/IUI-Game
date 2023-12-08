@@ -11,12 +11,12 @@ public class GameManager : MonoBehaviour
     public DistanceCheckTest distance;
     public Move player;
     public TMP_Text hiScore;
-    int coinScore = 0;
-    int mileScore = 0;
-    int speedScore = 0;
-    int topScore;
-    int topSpeed;
-    string highScore;
+    public int coinScore = 0;
+    public int mileScore = 0;
+    public int speedScore = 0;
+    public int topScore;
+    public int topSpeed;
+    public string highScore;
 
 
     // Start is called before the first frame update
@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour
         //This also means the session should save even if they leave the site
         //It only closes once the browser session (the browser itself) has closed
 
-    void SetHighScore()
+    public void SetHighScore()
     {
         //Run this after the player has lost all of their hearts and the game has ended
-        topScore = Mathf.Max(mileScore, PlayerPrefs.GetInt("HiScore", 0));
+        topScore = Mathf.Max(coinScore, PlayerPrefs.GetInt("HiScore", 0));
         //topSpeed = Mathf.Max(speedScore, PlayerPrefs.GetInt("HiSpeed", 0);)
         PlayerPrefs.SetInt("HiScore", topScore);
         //PlayerPrefs.SetInt("HiSpeed", topSpeed);

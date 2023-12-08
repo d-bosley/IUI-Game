@@ -2478,6 +2478,7 @@ MonoBehaviour:
   distScore: {fileID: 1180907301}
   distance: 0
   miles: 0
+  timer: 0
   ygr_feet: 0.2
   move: {fileID: 1773982221}
   spawner: {fileID: 998348344}
@@ -2881,6 +2882,8 @@ MonoBehaviour:
   - distance: 75.5
     prefabName: coin
     position: 1
+  hearts: {fileID: 1773982227}
+  manager: {fileID: 1069643570}
 --- !u!4 &228448145
 Transform:
   m_ObjectHideFlags: 0
@@ -11690,6 +11693,12 @@ MonoBehaviour:
   distance: {fileID: 228448144}
   player: {fileID: 1773982221}
   hiScore: {fileID: 1218202974}
+  coinScore: 0
+  mileScore: 0
+  speedScore: 0
+  topScore: 0
+  topSpeed: 0
+  highScore: 
 --- !u!4 &1069643571
 Transform:
   m_ObjectHideFlags: 0
@@ -12328,8 +12337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7493126, y: 0.8922963}
   m_AnchorMax: {x: 0.94083345, y: 0.9655186}
-  m_AnchoredPosition: {x: 1.8665161, y: 0}
-  m_SizeDelta: {x: 3.7328, y: -2.9270992}
+  m_AnchoredPosition: {x: -0.000061035156, y: -0.7317505}
+  m_SizeDelta: {x: 75.8063, y: -1.4635}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180907301
 MonoBehaviour:
@@ -12728,7 +12737,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.8313726, g: 0.19215688, b: 0.19215688, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12745,8 +12754,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12812,8 +12821,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8364792, y: 0.9153704}
   m_AnchorMax: {x: 0.94083345, y: 0.9655186}
-  m_AnchoredPosition: {x: -746.2201, y: 2}
-  m_SizeDelta: {x: -2, y: -4}
+  m_AnchoredPosition: {x: -746.22, y: -10.996}
+  m_SizeDelta: {x: 233.988, y: 21.993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1227519726
 GameObject:
@@ -12891,7 +12900,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 37eae8aa574163949bc31aad6505716b, type: 2}
+  - {fileID: 2100000, guid: 1cbaf8546d1ca354fb7f012d1d8419fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13409,8 +13418,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.048, y: 0.762}
   m_AnchorMax: {x: 0.22356252, y: 0.8518519}
-  m_AnchoredPosition: {x: 2.1099854, y: -0.5}
-  m_SizeDelta: {x: -3.7800293, y: 3}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 99.8932, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1303617967
 GameObject:
@@ -13992,7 +14001,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1cbaf8546d1ca354fb7f012d1d8419fd, type: 2}
+  - {fileID: 2100000, guid: 37eae8aa574163949bc31aad6505716b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18256,6 +18265,7 @@ MonoBehaviour:
   heartsParent: {fileID: 2118777418}
   gameOverUI: {fileID: 46114587}
   deadAudio: {fileID: 203440206}
+  manager: {fileID: 1069643570}
 --- !u!1 &1810033820
 GameObject:
   m_ObjectHideFlags: 0

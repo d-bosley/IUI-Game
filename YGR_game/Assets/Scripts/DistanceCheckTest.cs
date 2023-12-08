@@ -20,11 +20,14 @@ public class DistanceCheckTest : MonoBehaviour
 
     public float distance = 0;
     public int miles = 0;
+    public float timer = 0;
     public float ygr_feet;
     public Move move;
     public Spawner spawner;
     public Spawning[] spawn;
     private bool[] spawnedFlags;
+    public HeartSystem hearts;
+    public GameManager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -41,11 +44,22 @@ public class DistanceCheckTest : MonoBehaviour
         {miles += 1;
         distance = 0;
         spawner.buildingClone();
-        spawner.fallClone(1);
+        manager.SetHighScore();
+        hearts.gameOver();
         }
+
+        timer += ygr_feet * move.speed * Time.fixedDeltaTime;
+        if(timer >= 25f && distance < 100f)
+        {
+        spawner.fallClone(1);
+        float newTime = (timer/25f) - 1f;
+        timer = newTime;
+        }
+
         spawnObjects(distance);
+        float score = distance/100f;
         //in�s -- update ui
-        distScore.text = "Score: " + miles.ToString("F0");
+        distScore.text = "Miles: " + score.ToString("0.00");
     }
 
     void spawnObjects(float currentDistance)

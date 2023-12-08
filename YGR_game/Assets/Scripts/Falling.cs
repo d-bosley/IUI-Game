@@ -34,7 +34,6 @@ public class Falling : MonoBehaviour
     private void DestroyObject()
     {
         if(distance > 10){
-        //Debug.Log("Too Far");
         Destroy(myself, 1.0f);
     }
     }

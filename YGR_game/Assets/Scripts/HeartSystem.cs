@@ -11,7 +11,8 @@ public class HeartSystem : MonoBehaviour
     public GameObject gameOverUI;
     Image[] hearts;
     private int life;
-    public AudioSource deadAudio; 
+    public AudioSource deadAudio;
+    public GameManager manager;
 
 
     void Start()
@@ -65,6 +66,7 @@ public class HeartSystem : MonoBehaviour
     //show game over ui
     public void gameOver()
     {
+        manager.SetHighScore();
         gameOverUI.SetActive(true);
         deadAudio.Play(); //play dead audio
     }
