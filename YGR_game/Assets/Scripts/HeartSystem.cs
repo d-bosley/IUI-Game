@@ -29,7 +29,7 @@ public class HeartSystem : MonoBehaviour
         if (dead == true)
         {
             //dead code
-            Debug.Log("we died");
+            //Debug.Log("we died");
         }
     }
 

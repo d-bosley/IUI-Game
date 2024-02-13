@@ -9,6 +9,7 @@ public class Falling : MonoBehaviour
     float distance;
     GameObject myself;
     GameObject player;
+    float velocity = 15f;
     int target;
     Move move;
 
@@ -25,15 +26,16 @@ public class Falling : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(transform.position, Vector3.zero);
-        // Impulse value that makes the object ascend before falling
-        // Force value that makes the object fall once it's spawned
-        transform.Translate(Vector2.up * -10f * Time.deltaTime);
+        // Create value representing "velocity" that starts positive and becomes negative
+        // Clamp the maximum and minimum values to ensure it won't "fall" too fast
+        velocity = Mathf.Clamp(velocity - .415f, -30, 25);
+        transform.Translate(Vector2.up * velocity * Time.deltaTime);
         DestroyObject();
     }
 
     private void DestroyObject()
     {
-        if(distance > 10){
+        if(distance > 20){
         Destroy(myself, 1.0f);
     }
     }
@@ -41,7 +43,7 @@ public class Falling : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the trigger zone has a collider with a specific tag (e.g., "Player").
-        if (other.CompareTag("Player") && target == move.spawnPoint)
+        if (other.CompareTag("Player"))
         {
             // Access the health component of the object with the "Player" tag.
             Move move = other.GetComponent<Move>();

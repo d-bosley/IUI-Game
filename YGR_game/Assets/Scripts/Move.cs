@@ -16,6 +16,7 @@ public class Move : MonoBehaviour
     float lockTime = 2;
     float countdown = 1;
     float passtime = 6;
+    float invintime = 8;
     Transform[] spawns;
     [HideInInspector] public float speed;
     [HideInInspector] public float currentSpeed;
@@ -25,6 +26,7 @@ public class Move : MonoBehaviour
     [HideInInspector] public bool stunned = false;
     [HideInInspector] public bool passed = false;
     [HideInInspector] public bool damaged = false;
+    [HideInInspector] public bool invincible = false;
     [HideInInspector] public bool locked = false;
 
     // Start is called before the first frame update
@@ -42,6 +44,7 @@ public class Move : MonoBehaviour
     {
         PlayerSpeed();
         Passing();
+        Invincible();
         EndGame();
 
         int dir_Up = Input.GetKeyDown(KeyCode.W) ? 1 : 0;
@@ -70,7 +73,6 @@ public class Move : MonoBehaviour
     {
         if(passed)
         {
-            box.enabled = false;
             bool visible = Mathf.FloorToInt(8 * Time.time) % 2 == 0;
             sprite.enabled = visible;
             passtime -= countdown * Time.deltaTime;
@@ -79,7 +81,24 @@ public class Move : MonoBehaviour
                 passed = false;
                 passtime = 6;
                 sprite.enabled = true;
-                box.enabled = true;
+            }
+        }
+    }
+
+    private void Invincible()
+    {
+        if(invincible)
+        {
+            bool visible = Mathf.FloorToInt(8 * Time.time) % 2 == 0;
+            sprite.enabled = visible;
+            //Play Audio
+            invintime -= countdown * Time.deltaTime;
+            if(invintime <= 0)
+            {
+                invincible = false;
+                invintime = 8;
+                sprite.enabled = true;
+                //Stop Audio
             }
         }
     }
@@ -90,7 +109,7 @@ public class Move : MonoBehaviour
         timer -= countdown * Time.deltaTime;
 
         if (timer <= 0){
-        speed += .025f * Time.deltaTime;
+        speed += .065f * Time.deltaTime;
         }
         }
 

@@ -22,14 +22,13 @@ public class Paddle : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(transform.position, Vector3.zero);
-        transform.Translate(Vector2.right * -30f * move.speed  * Time.deltaTime);
+        transform.Translate(Vector2.right * -12f * move.speed  * Time.deltaTime);
         DestroyObject();
     }
 
     private void DestroyObject()
     {
         if(distance > 35){
-        //Debug.Log("Too Far");
         Destroy(myself, 1.0f);
     }
     }
@@ -40,13 +39,14 @@ public class Paddle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Get the player Scripts
-            float invincible = 10;
             Move move = other.GetComponent<Move>();
+            Collider2D Collider = myself.GetComponent<Collider2D>();
 
             if(move != null)
             {
-                invincible -= Time.time;
-                move.box.enabled = invincible > 0 ? false : true;
+                move.invincible = true;
+                Collider.enabled = false;
+                Destroy(myself, 0f);
             }
         }
     }

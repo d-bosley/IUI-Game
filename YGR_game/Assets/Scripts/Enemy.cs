@@ -56,10 +56,9 @@ public class Enemy : MonoBehaviour
             HeartSystem health = other.GetComponent<HeartSystem>();
             Collider2D Collider = myself.GetComponent<Collider2D>();
 
-            health.TakeDamage(1);
-
-            if(move != null)
+            if(move != null && !move.invincible && !move.passed)
             {
+                health.TakeDamage(1);
                 move.damaged = true;
                 Collider.enabled = false;
                 Destroy(myself, 2.0f);

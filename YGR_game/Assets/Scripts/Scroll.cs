@@ -13,12 +13,16 @@ public class Scroll : MonoBehaviour
     public Renderer bg_d;
     public Renderer bg_f;
     public Renderer bg_g;
+    public Renderer bg_h;
+    public Renderer bg_i;
     private Material mat_a;
     private Material mat_b;
     private Material mat_c;
     private Material mat_d;
     private Material mat_e;
     private Material mat_f;
+    private Material mat_g;
+    private Material mat_h;
     public float streamSpeed_A;
     public float streamSpeed_B;
     public Move moveScript;
@@ -31,6 +35,8 @@ public class Scroll : MonoBehaviour
         mat_d = bg_d.material;
         mat_e = bg_f.material;
         mat_f = bg_g.material;
+        mat_g = bg_h.material;
+        mat_h = bg_i.material;
         //baseScroll = Vector2.right * scrollSpeedX;
         //mat_s = sky.material;
         //mat_h = hill.material;
@@ -50,7 +56,9 @@ public class Scroll : MonoBehaviour
         mat_a.mainTextureOffset += textureOffset;
         mat_b.mainTextureOffset += textureOffset * .25f;
         mat_c.mainTextureOffset += textureOffset * 8f;
-        mat_d.mainTextureOffset += textureOffset * 8.125f;
+        mat_d.mainTextureOffset += textureOffset * 8f;
+        mat_g.mainTextureOffset += textureOffset * 10f;
+        mat_h.mainTextureOffset += textureOffset * 10f;
         mat_e.mainTextureOffset += textureOffset * streamSpeed_A;
         mat_f.mainTextureOffset += textureOffset * streamSpeed_B;
     }

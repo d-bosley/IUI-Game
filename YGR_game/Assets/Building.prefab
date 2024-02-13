@@ -97,3 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 616280c748a5dd746a660353a928765a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingSprite:
+  - sprite: {fileID: 21300000, guid: 97d6d795b377ee643ae5f2de987ef7d9, type: 3}
+  - sprite: {fileID: 21300000, guid: e2fb0a20d1099c5488b151fb604df992, type: 3}
+  - sprite: {fileID: 21300000, guid: e0d05e21dc5d774449d5da9e22f7b523, type: 3}
+  - sprite: {fileID: 21300000, guid: 12aa4225023d7dd459817c2ed6fa3961, type: 3}
+  - sprite: {fileID: 21300000, guid: 6fcdd4bc294c6194bbf50be9c7917c18, type: 3}
+  - sprite: {fileID: 21300000, guid: de50b11bc821e2045adda1d86ee860cb, type: 3}
+  - sprite: {fileID: 21300000, guid: 921e6f59e880df94d8805ad2eef87bed, type: 3}
+  - sprite: {fileID: 21300000, guid: 379efd8ba79b0ba4c948cdb3a9556962, type: 3}
+  - sprite: {fileID: 21300000, guid: b9792ffa3fb348b4a8727ec0629863db, type: 3}
+  - sprite: {fileID: 21300000, guid: ee1c967470d9edb44a756497a9981789, type: 3}
+  - sprite: {fileID: 21300000, guid: fc07a030d2f631c45a3a7fc2b7f4373b, type: 3}
