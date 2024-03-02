@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         topScore = Mathf.Max(coinScore, PlayerPrefs.GetInt("HiScore", 0));
         //topSpeed = Mathf.Max(speedScore, PlayerPrefs.GetInt("HiSpeed", 0);)
         PlayerPrefs.SetInt("HiScore", topScore);
+        // HighScores.UploadScore(string username, topScore)
         //PlayerPrefs.SetInt("HiSpeed", topSpeed);
     }
 

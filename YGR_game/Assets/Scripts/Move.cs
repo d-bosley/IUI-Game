@@ -16,7 +16,9 @@ public class Move : MonoBehaviour
     float lockTime = 2;
     float countdown = 1;
     float passtime = 6;
-    float invintime = 8;
+    float invintime = 10;
+    public AudioSource bg_song;
+    public AudioSource invi_song;
     Transform[] spawns;
     [HideInInspector] public float speed;
     [HideInInspector] public float currentSpeed;
@@ -38,6 +40,9 @@ public class Move : MonoBehaviour
         spawnPoint = 2;
         speed = 1;
         currentSpeed = speed;
+        invi_song.Play();
+        invi_song.Pause();
+        bg_song.Play();
     }
 
     private void Update()
@@ -91,14 +96,16 @@ public class Move : MonoBehaviour
         {
             bool visible = Mathf.FloorToInt(8 * Time.time) % 2 == 0;
             sprite.enabled = visible;
-            //Play Audio
             invintime -= countdown * Time.deltaTime;
+            bg_song.Pause();
+            invi_song.UnPause();
             if(invintime <= 0)
             {
                 invincible = false;
-                invintime = 8;
+                invintime = 10;
                 sprite.enabled = true;
-                //Stop Audio
+                bg_song.UnPause();
+                invi_song.Pause();
             }
         }
     }
@@ -109,7 +116,7 @@ public class Move : MonoBehaviour
         timer -= countdown * Time.deltaTime;
 
         if (timer <= 0){
-        speed += .065f * Time.deltaTime;
+        speed += .095f * Time.deltaTime;
         }
         }
 
@@ -173,6 +180,7 @@ public class Move : MonoBehaviour
         if(health.dead == true)
         {
             speed = 0;
+            bg_song.Stop();
         }
     }
 }
