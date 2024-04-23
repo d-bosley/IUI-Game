@@ -22,6 +22,7 @@ public class DistanceCheckTest : MonoBehaviour
     public float truedistance = 0;
     public int miles = 0;
     public float timer = 0;
+    public float clocktime = 5;
     public float ygr_feet;
     public float randFloat;
     public float place;
@@ -33,6 +34,10 @@ public class DistanceCheckTest : MonoBehaviour
     public List<int> memory;
     public HeartSystem hearts;
     public GameManager manager;
+    public int target;
+    public int spot;
+    public int integer;
+    public AudioSource fall_sound;
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +47,11 @@ public class DistanceCheckTest : MonoBehaviour
         //spawnedFlags.length = 50;
         //memory.length = 2;
         memory = new List<int>();
-        spawns.Add("enemy");
         spawns.Add("coin");
+        spawns.Add("silvercoin");
+        spawns.Add("enemy");
+        spawns.Add("enemy");
+        spawns.Add("enemy");
         spawnedFlags = new bool[spawn.Length];
     }
 
@@ -57,17 +65,28 @@ public class DistanceCheckTest : MonoBehaviour
         {
         miles += 1;
         distance = 0;
-        spawner.buildingClone();
+        //spawner.buildingClone();
         //manager.SetHighScore();
         //hearts.gameOver();
         }
 
         timer += ygr_feet * move.speed * Time.fixedDeltaTime;
-        if(timer >= 25f)
+        if(timer >= 50f)
         {
+        target = Random.Range(1, 4);
         spawner.fallClone(1);
-        float newTime = (timer/25f) - 1f;
+        spawner.shadowClone(target);
+        float newTime = (timer/50f) - 1f;
         timer = newTime;
+        clocktime = 5;
+        fall_sound.Play();
+        }
+
+        if(clocktime <= timer)
+        {
+        integer = Random.Range(0, 4);
+        spawner.characterClone();
+        clocktime += 1;
         }
 
         DistanceCheck(truedistance);
@@ -78,7 +97,8 @@ public class DistanceCheckTest : MonoBehaviour
 
     public void SpawnPaddle()
     {
-        spawner.paddleClone(2);
+        spot = Random.Range(1, 4);
+        spawner.paddleClone(spot);
     }
 
 
@@ -92,13 +112,14 @@ public class DistanceCheckTest : MonoBehaviour
     }
     }
 
-    void HardSpawn()
+    
+    void SoftSpawn()
     {
     for (int i = 0; i < 3; i++)
     {
     int chance = Random.Range(0, 3);
     int spawn = Random.Range(0, 2);
-    if (chance > 1)
+    if (chance == 2)
     {
         if (memory.Count == 2 && memory[0] == 0 && memory[1] == 0)
         {
@@ -111,6 +132,35 @@ public class DistanceCheckTest : MonoBehaviour
         memory.Add(spawn);
         }
     }
+    if (memory.Count == 3){memory.Clear();}
+    }
+    }
+
+    void HardSpawn()
+    {
+    for (int i = 0; i < 3; i++)
+    {
+    int chance = Random.Range(0, 4);
+    int spawn = Random.Range(0, 5);
+    if (chance > 1)
+    {
+        if (memory.Count == 2 && memory[0] > 1 && memory[1] > 1)
+        {
+        spawner.spawnClone(spawns[0], i + 1);
+        memory.Clear();
+        //Debug.Log("unfair");
+        }
+        else
+        {
+        spawner.spawnClone(spawns[spawn], i + 1);
+        memory.Add(spawn);
+        }
+    }
+    else if (chance <= 1)
+    {
+        memory.Add(0);
+    }
+
     if (memory.Count == 3){memory.Clear();}
     }
     }

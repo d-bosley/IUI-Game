@@ -1,0 +1,11 @@
+{
+    "m_Dictionary": {
+        "m_DictionaryValues": [
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "buildOutputDirList",
+                "value": "{\"m_Value\":\"C:/Users/thiso/OneDrive/Documents/Builds/GDC_WebMobileBuild_Update_1_Build;C:/Users/thiso/OneDrive/Documents/Builds/GDC_WebMobileBuild_Final_Build;C:/Users/thiso/OneDrive/Documents/Builds/GDC_WebMobileBuild_Final_Test;C:/Users/thiso/OneDrive/Documents/Builds/GDC_WebMobileBuild_Final;C:/Users/thiso/OneDrive/Documents/Builds/GDC_WebMobileBuild_Meeting;C:/Users/thiso/OneDrive/Documents/Builds/GDC_WebMobileBuild_2;C:/Users/thiso/OneDrive/Documents/Builds/GDC_WebMobileBuild;C:/Users/thiso/OneDrive/Documents/Builds/GDC_WebBuild;;\"}"
+            }
+        ]
+    }
+}

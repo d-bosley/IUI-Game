@@ -12,6 +12,8 @@ public class HeartSystem : MonoBehaviour
     Image[] hearts;
     private int life;
     public AudioSource deadAudio;
+    public AudioSource loseAudio;
+    public AudioSource hartAudio;
     public GameManager manager;
 
 
@@ -48,7 +50,6 @@ public class HeartSystem : MonoBehaviour
                 //we died
                 dead = true;
                 gameOver();
-                
             }
         }
     }
@@ -60,6 +61,7 @@ public class HeartSystem : MonoBehaviour
             hearts[life].enabled = true;
             //heartImg.enabled = true;
             life++;
+            hartAudio.Play();
         }
     }
 
@@ -68,6 +70,7 @@ public class HeartSystem : MonoBehaviour
     {
         manager.SetHighScore();
         gameOverUI.SetActive(true);
+        loseAudio.Play();
         deadAudio.Play(); //play dead audio
     }
 }

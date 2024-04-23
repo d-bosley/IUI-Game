@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour
     public DistanceCheckTest distance;
     public Move player;
     public TMP_Text hiScore;
+    public TMP_Text gameOverScore;
     public int coinScore = 0;
     public int mileScore = 0;
     public int speedScore = 0;
     public int topScore;
+    public int topMiles;
     public int topSpeed;
     public string highScore;
 
@@ -31,8 +33,8 @@ public class GameManager : MonoBehaviour
         //Setting the score
         //Score is the player's distance, number of coins, and their top speed
         coinScore = Mathf.Max(coinScore, items.coins);
-        mileScore = Mathf.Max(mileScore, distance.miles);
-        speedScore = Mathf.Max(speedScore, Mathf.RoundToInt(player.speed));
+        mileScore = distance.miles;
+        speedScore = Mathf.RoundToInt(player.currentSpeed);
     }
 
         //SCORE DESCRIPTION
@@ -46,9 +48,14 @@ public class GameManager : MonoBehaviour
     {
         //Run this after the player has lost all of their hearts and the game has ended
         topScore = Mathf.Max(coinScore, PlayerPrefs.GetInt("HiScore", 0));
+        topMiles = mileScore;
+        topSpeed = speedScore;
+        gameOverScore.text = $"SCORE: {topScore}";
         //topSpeed = Mathf.Max(speedScore, PlayerPrefs.GetInt("HiSpeed", 0);)
         PlayerPrefs.SetInt("HiScore", topScore);
-        // HighScores.UploadScore(string username, topScore)
+        PlayerPrefs.SetInt("CnScore", coinScore);
+        PlayerPrefs.SetInt("MiScore", topMiles);
+        PlayerPrefs.SetInt("SpScore", topSpeed);
         //PlayerPrefs.SetInt("HiSpeed", topSpeed);
     }
 

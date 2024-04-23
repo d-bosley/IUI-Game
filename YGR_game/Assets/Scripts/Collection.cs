@@ -25,9 +25,9 @@ public class Collection : MonoBehaviour
     
     private void SpawnPaddle()
     {
-        if(coins >= setCoins + 20)
+        if(coins >= setCoins + 30)
         {
-            setCoins += 20;
+            setCoins += 30;
             distance.SpawnPaddle();
         }
     }
@@ -35,11 +35,13 @@ public class Collection : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if object we entered has collectible tag...
-        if (collision.gameObject.CompareTag("Collectible"))
+        if (collision.CompareTag("Collectible"))
         {
+            GameObject item = collision.GetComponent<GameObject>();
+            Coin coin = collision.GetComponent<Coin>();
+            coin.DestroyCoin(); //destroy it
+            coins += coin.value; //increment counter
             coinCollectSound.Play(); //play sound
-            Destroy(collision.gameObject); //destroy it
-            coins += 1; //increment counter
             //Debug.Log("coins: " + coins);
             CoinsTxt.text = "x " + coins; //update UI
         }

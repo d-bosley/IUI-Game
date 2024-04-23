@@ -11,14 +11,17 @@ public class Move : MonoBehaviour
     public SpriteRenderer sprite;
     public Collider2D box;
     public HeartSystem health;
-    float timer = 2;
+    public SwipeControls swipe;
+    float timer = 5;
     float pauseTime = 2;
     float lockTime = 2;
     float countdown = 1;
-    float passtime = 6;
+    float passtime = 4;
     float invintime = 10;
     public AudioSource bg_song;
     public AudioSource invi_song;
+    public AudioSource damg_sound;
+    Animator anim;
     Transform[] spawns;
     [HideInInspector] public float speed;
     [HideInInspector] public float currentSpeed;
@@ -28,33 +31,42 @@ public class Move : MonoBehaviour
     [HideInInspector] public bool stunned = false;
     [HideInInspector] public bool passed = false;
     [HideInInspector] public bool damaged = false;
+    [HideInInspector] public bool damgstart = false;
     [HideInInspector] public bool invincible = false;
+    [HideInInspector] public bool invinstart = false;
     [HideInInspector] public bool locked = false;
 
     // Start is called before the first frame update
     private void Start()
     {
+        anim = GetComponent<Animator>();
         spawns = spawnParent.GetComponentsInChildren<Transform>();
         // Initialize the character's position.
         transform.position = spawns[2].position;
         spawnPoint = 2;
-        speed = 1;
+        //speed = .85f;
+        speed = 1.85f;
         currentSpeed = speed;
-        invi_song.Play();
-        invi_song.Pause();
         bg_song.Play();
     }
 
     private void Update()
     {
+        MoveCharacter();
         PlayerSpeed();
         Passing();
         Invincible();
         EndGame();
+    }
 
-        int dir_Up = Input.GetKeyDown(KeyCode.W) ? 1 : 0;
-        int dir_Down = Input.GetKeyDown(KeyCode.S) ? 1 : 0;
+    private void MoveCharacter()
+    {
+        int dir_Up = Input.GetButtonDown("Up") ? 1 : 0;
+        int dir_Down = Input.GetButtonDown("Down") ? 1 : 0;
         spawnPoint = Mathf.Clamp(spawnPoint + dir_Down - dir_Up, 1, 3);
+        //Add a second input system that checks for swipe inputs
+        spawnPoint = Mathf.Clamp(spawnPoint + swipe.direction, 1, 3);
+
         Moving(spawnPoint);
         //Vector2 direction = Vector2.up * (dir_Up - dir_Down);
         //SnapToNearestPosition(direction)
@@ -84,7 +96,7 @@ public class Move : MonoBehaviour
             if(passtime <= 0)
             {
                 passed = false;
-                passtime = 6;
+                passtime = 3;
                 sprite.enabled = true;
             }
         }
@@ -94,34 +106,42 @@ public class Move : MonoBehaviour
     {
         if(invincible)
         {
-            bool visible = Mathf.FloorToInt(8 * Time.time) % 2 == 0;
-            sprite.enabled = visible;
             invintime -= countdown * Time.deltaTime;
             bg_song.Pause();
-            invi_song.UnPause();
+            anim.SetBool("invincible", true);
+            if(!invinstart)
+            {
+                invi_song.Play();
+                invinstart = true;
+            }
+
             if(invintime <= 0)
             {
                 invincible = false;
+                invinstart = false;
+                passed = true;
+                passtime = 2;
                 invintime = 10;
-                sprite.enabled = true;
                 bg_song.UnPause();
-                invi_song.Pause();
+                invi_song.Stop();
+                anim.SetBool("invincible", false);
             }
         }
     }
 
     private void PlayerSpeed()
     {
-        if (!moving){
+        if (!damaged){
         timer -= countdown * Time.deltaTime;
 
         if (timer <= 0){
-        speed += .095f * Time.deltaTime;
+        //speed += .095f * Time.deltaTime;
+        speed += .0245f * Time.deltaTime;
         }
         }
 
         else{
-        timer = 2;
+        timer = 5;
         }
 
 
@@ -133,12 +153,21 @@ public class Move : MonoBehaviour
             speed = 0;
             pauseTime -= countdown * Time.deltaTime;
             timer = 3;
+            anim.SetBool("damaged", true);
+            if(!damgstart)
+            {
+                damg_sound.Play();
+                damgstart = true;
+            }
             if(pauseTime <= 0)
             {
-                speed = Mathf.Clamp(currentSpeed -.5f, 1, currentSpeed);
+                //speed = Mathf.Clamp(currentSpeed -.5f, 1, currentSpeed);
+                speed = currentSpeed;
                 pauseTime = 2;
                 damaged = false;
                 locked = false;
+                damgstart = false;
+                anim.SetBool("damaged", false);
             }
         }
         else
@@ -162,7 +191,7 @@ public class Move : MonoBehaviour
 
     private void Moving(int place)
     {
-        if(!locked)
+        if(!locked && !health.dead)
         {
         Vector3 currentPosition = transform.position;
         Vector3 targetPosition = spawns[place].position;
@@ -181,6 +210,9 @@ public class Move : MonoBehaviour
         {
             speed = 0;
             bg_song.Stop();
+            anim.SetBool("gameover", true);
+            swipe.arrows.SetActive(false);
+
         }
     }
 }

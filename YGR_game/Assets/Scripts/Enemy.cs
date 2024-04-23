@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     GameObject myself;
     GameObject player;
     Move move;
+    HeartSystem health;
     SpriteRenderer rend;
     public EnemySprite[] enemySprite;
     //Sprite[] enemySprite = new Sprite[4];
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour
         myself = gameObject;
         player = GameObject.Find("Player");
         rend = myself.GetComponent<SpriteRenderer>();
-        if(player != null){move = player.GetComponent<Move>();}
+        if(player != null){move = player.GetComponent<Move>(); health = player.GetComponent<HeartSystem>();}
         ChangeSprite();
     }
 
@@ -41,19 +42,19 @@ public class Enemy : MonoBehaviour
 
     private void DestroyObject()
     {
-        if(distance > 35){
-        Destroy(myself, 1.0f);
+        if(distance > 25){
+        Destroy(myself, 0f);
     }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the trigger zone has a collider with a specific tag (e.g., "Player").
-        if (other.CompareTag("Player"))
+        // Check if the trigger zone has a collider with a specific tag (e.g., "Hitbox").
+        if (other.CompareTag("Hitbox"))
         {
             // Access the health component of the object with the "Player" tag.
-            Move move = other.GetComponent<Move>();
-            HeartSystem health = other.GetComponent<HeartSystem>();
+/*             Move move = other.GetComponent<Move>();
+            HeartSystem health = other.GetComponent<HeartSystem>(); */
             Collider2D Collider = myself.GetComponent<Collider2D>();
 
             if(move != null && !move.invincible && !move.passed)

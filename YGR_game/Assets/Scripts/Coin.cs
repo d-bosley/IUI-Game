@@ -7,6 +7,7 @@ public class Coin : MonoBehaviour
 {
     Vector3 thisPosition;
     float distance;
+    public int value;
     GameObject myself;
     GameObject player;
     Move move;
@@ -17,6 +18,9 @@ public class Coin : MonoBehaviour
         myself = gameObject;
         player = GameObject.Find("Player");
         if(player != null){move = player.GetComponent<Move>();}
+        
+        //Red Coins are worth 1
+        //Silver Coins are worth 5
     }
 
     // Update is called once per frame
@@ -29,9 +33,14 @@ public class Coin : MonoBehaviour
 
     private void DestroyObject()
     {
-        if(distance > 35){
+        if(distance > 25){
         //Debug.Log("Too Far");
-        Destroy(myself, 1.0f);
+        Destroy(myself, 0f);
     }
+    }
+
+    public void DestroyCoin()
+    {
+        Destroy(myself, 0f);
     }
 }

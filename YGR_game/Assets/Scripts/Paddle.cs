@@ -44,6 +44,7 @@ public class Paddle : MonoBehaviour
 
             if(move != null)
             {
+                move.invincible = false;
                 move.invincible = true;
                 Collider.enabled = false;
                 Destroy(myself, 0f);
